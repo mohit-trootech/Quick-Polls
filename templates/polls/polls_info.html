@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Project Information{% endblock %}
+
+{% block layoutTitle %}Quick Polls - Django Based Polling Application{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <!-- Project Overview -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h1 class="fs-1">Project Overview</h1>
+            <p class="fs-5">
+                Quick Polls is a Django-based polling application that allows users to create and participate in polls.
+                Built with the Django framework and styled with Bootstrap, this application offers features such as user
+                authentication, dynamic poll creation, and customizable filtering options.
+            </p>
+        </div>
+    </div>
+
+    <!-- Features -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h3 class="fs-3">Features</h3>
+            <ul class="list-group">
+                <li class="list-group-item"><strong>User Authentication:</strong> Users can register, log in, and manage
+                    their accounts.</li>
+                <li class="list-group-item"><strong>Login Required Middleware:</strong> Ensure that certain views are
+                    accessible only to authenticated users.</li>
+                <li class="list-group-item"><strong>Django Forms:</strong> Utilize Django’s form handling to create and
+                    manage polls and user input.</li>
+                <li class="list-group-item"><strong>Bootstrap UI:</strong> A responsive and modern UI using Bootstrap
+                    for a better user experience.</li>
+                <li class="list-group-item"><strong>Dynamic Poll Creation:</strong> Create polls with multiple choices,
+                    tags, and images.</li>
+                <li class="list-group-item"><strong>Filtering:</strong> Filter polls based on sorting data and tags.
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Installation Instructions -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h3 class="fs-3">Installation</h3>
+            <ol>
+                <li><strong>Clone the Repository:</strong>
+                    <code>git clone https://github.com/mohit-trootech/Quick-Polls</code>
+                </li>
+                <li><strong>Navigate to Project Directory:</strong> <code>cd Quick-Polls</code></li>
+                <li><strong>Create and Activate a Virtual Environment:</strong>
+                    <pre><code>python -m venv env
+source env/bin/activate</code></pre>
+                    (Windows: <code>env\Scripts\activate</code>)
+                </li>
+                <li><strong>Install Dependencies:</strong> <code>pip install -r requirements.txt</code></li>
+                <li><strong>Apply Migrations:</strong> <code>python manage.py migrate</code></li>
+                <li><strong>Create a Superuser (for admin access):</strong>
+                    <code>python manage.py createsuperuser</code>
+                </li>
+                <li><strong>Load Sample Data:</strong> <code>python manage.py loaddata data.json</code></li>
+                <li><strong>Run the Development Server:</strong> <code>python manage.py runserver</code></li>
+                <li><strong>Access the Application:</strong> Open your browser and navigate to
+                    <code>http://127.0.0.1:8000/</code>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Contributing -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h3 class="fs-3">Contributing</h3>
+            <p>Contributions are welcome! Please fork the repository and submit a pull request with your changes.</p>
+        </div>
+    </div>
+
+    <!-- License -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h3 class="fs-3">License</h3>
+            <p>This project is licensed under the MIT License - see the <code>LICENSE</code> file for details.</p>
+        </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h3 class="fs-3">Contact</h3>
+            <p>For any questions or issues, please contact:</p>
+            <ul class="list-unstyled">
+                <li><strong>GitHub:</strong> <a href="https://github.com/mohit-trootech"
+                        class="btn badge text-bg-secondary" target="_blank">GitHub Repository</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
