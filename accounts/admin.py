@@ -8,6 +8,8 @@ from accounts.constants import (
     STATUS_ACTIVE_BOOL,
     USER_ADMIN_STATUS_UNACTIVE_DESCRIPTION,
     USER_ADMIN_STATUS_ACTIVE_DESCRIPTION,
+    USER_INACTIVE_SUCCESS_MESSAGE,
+    USER_ACTIVE_SUCCESS_MESSAGE,
 )
 
 
@@ -60,8 +62,7 @@ class UserAdmin(admin.ModelAdmin):
         self.message_user(
             request,
             ngettext(
-                "%d votes was successfully been reset.",
-                "%d votes were successfully been reset.",
+                USER_INACTIVE_SUCCESS_MESSAGE,
                 updated,
             )
             % updated,
@@ -74,8 +75,7 @@ class UserAdmin(admin.ModelAdmin):
         self.message_user(
             request,
             ngettext(
-                "%d votes was successfully been reset.",
-                "%d votes were successfully been reset.",
+                USER_ACTIVE_SUCCESS_MESSAGE,
                 updated,
             )
             % updated,

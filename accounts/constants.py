@@ -8,8 +8,8 @@ VOTE_RESET = 0
 # Descriptions
 USER_ADMIN_STATUS_UNACTIVE_DESCRIPTION = "Mark Selected Items Unactive"
 USER_ADMIN_STATUS_ACTIVE_DESCRIPTION = "Mark Selected Items Active"
-QUESTION_TOTAL_VOTES_RESET_DESCRIPTION = "Mark Selected Items to Reset Total Votes"
-CHOICE_TOTAL_VOTES_RESET_DESCRIPTION = "Mark Selected Items to Reset Votes"
+USER_INACTIVE_SUCCESS_MESSAGE = "%d users were successfully been inactive."
+USER_ACTIVE_SUCCESS_MESSAGE = "%d users were successfully been active."
 
 # Validation Error
 LOGIN_ERROR = "Incorrect username or password."
