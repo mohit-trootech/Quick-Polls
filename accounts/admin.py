@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from accounts.models import User
 from django.contrib import admin
+from django.contrib import messages
+from django.utils.translation import ngettext
 from accounts.constants import (
     STATUS_INACTIVE_BOOL,
     STATUS_ACTIVE_BOOL,
@@ -54,12 +56,28 @@ class UserAdmin(admin.ModelAdmin):
 
     @admin.action(description=USER_ADMIN_STATUS_UNACTIVE_DESCRIPTION)
     def mark_inactive(self, request, queryset):
-        for instantce in queryset:
-            instantce.is_active = STATUS_INACTIVE_BOOL
-            instantce.save(update_fields=["is_active"])
+        updated = queryset.update(is_active=STATUS_INACTIVE_BOOL)
+        self.message_user(
+            request,
+            ngettext(
+                "%d votes was successfully been reset.",
+                "%d votes were successfully been reset.",
+                updated,
+            )
+            % updated,
+            messages.SUCCESS,
+        )
 
     @admin.action(description=USER_ADMIN_STATUS_ACTIVE_DESCRIPTION)
     def mark_active(self, request, queryset):
-        for instantce in queryset:
-            instantce.is_active = STATUS_ACTIVE_BOOL
-            instantce.save(update_fields=["is_active"])
+        updated = queryset.update(is_active=STATUS_ACTIVE_BOOL)
+        self.message_user(
+            request,
+            ngettext(
+                "%d votes was successfully been reset.",
+                "%d votes were successfully been reset.",
+                updated,
+            )
+            % updated,
+            messages.SUCCESS,
+        )
