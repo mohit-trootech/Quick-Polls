@@ -2,6 +2,7 @@
 from django.utils import timezone
 from django.views.generic import ListView, FormView, TemplateView
 from polls.models import Question, Choice, Tag
+from django.db.models import Q
 from django.http import HttpResponse, JsonResponse
 from polls.utils import (
     update_vote_data_choice_id,
@@ -31,15 +32,17 @@ class IndexView(ListView):
 
         :return:
         """
+        filter_query = Q()
         orderby = self.request.GET.get("orderby", "-created")
         tag = self.request.GET.get("tag", "")
-        queryset = Question.objects.prefetch_related("choice").filter(
-            created__lte=timezone.now()
-        )
         if tag:
-            queryset = queryset.filter(tag__title=tag)
-            return queryset
-        return queryset.order_by(orderby)
+            filter_query = Q(tag__title=tag)
+
+        return (
+            Question.objects.prefetch_related("choice")
+            .filter(Q(created__lte=timezone.now()) & filter_query)
+            .order_by(orderby)
+        )
 
     def get_template_names(self):
         """

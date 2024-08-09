@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from django.views.generic import FormView, View, UpdateView
+from accounts.models import User
 from django.contrib.auth import authenticate, login, logout
 from accounts.forms import UserLoginForm, UserCreationForm, UserUpdateForm
-from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from .models import User
+from django.shortcuts import redirect
 from accounts.constants import (
     LOGIN_ERROR,
     LOGIN_TEMPLATE,
@@ -52,8 +52,15 @@ class ProfileView(UpdateView):
     template_name = PROFILE_TEMPLATE
     form_class = UserUpdateForm
 
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+
     def get_success_url(self):
-        return reverse_lazy("profile", kwargs={"pk": self.request.user.pk})
+        return reverse_lazy("profile-counter-view", kwargs={"pk": self.request.user.pk})
+
+    def get_queryset(self):
+        return User.objects.filter(id=self.request.user.id)
 
 
 class LogoutView(View):
